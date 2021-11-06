@@ -1,0 +1,99 @@
+import React, { useEffect, useState } from 'react'
+import tw from "tailwind-styled-components";
+import Map from './components/map';
+import { useRouter } from "next/router"
+import RideSelector from './components/RideSelector';
+import Link from "next/link";
+
+const Confirm = () => {
+
+    const router = useRouter();
+    const { pickup, dropoff } = router.query;
+
+    const [pickupCoordinates, setPickupCoordinates] = useState("");
+    const [dropoffCoordinates, setDropoffCoordinates] = useState("");
+
+    const getPickupCoordinates = (pickup) => {
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` + 
+            new URLSearchParams({
+                access_token: "pk.eyJ1IjoiYmNyYWRkb2NrMjkiLCJhIjoiY2t2bG82ZnhkZGcxODJwbW5mdjRuNmFlNSJ9.FTd8KksdZAOWLVhJlEmuJA",
+                limit: 1
+            })
+        )
+            .then(response => response.json())
+            .then(data => {
+                setPickupCoordinates(data.features[0].center);
+            })
+    }
+
+    const getDropoffCoordinates = (dropoff) => {
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` + 
+            new URLSearchParams({
+                access_token: "pk.eyJ1IjoiYmNyYWRkb2NrMjkiLCJhIjoiY2t2bG82ZnhkZGcxODJwbW5mdjRuNmFlNSJ9.FTd8KksdZAOWLVhJlEmuJA",
+                limit: 1
+            })
+        )
+            .then(response => response.json())
+            .then(data => {
+                console.log("Dropoff")
+                setDropoffCoordinates(data.features[0].center);
+            })
+    }
+
+    useEffect(() => {
+        getPickupCoordinates(pickup);
+        getDropoffCoordinates(dropoff);
+    }, [])
+
+    return (
+        <Wrapper>
+            <ButtonContainer>
+                {/** Link for Back button to go back to SEARCH page */}
+                <Link href={"/search"}>
+                    <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
+                    {/** link the back button */}
+                </Link>
+            </ButtonContainer>
+            <Map
+                pickupCoordinates={pickupCoordinates}
+                dropoffCoordinates={dropoffCoordinates}
+            />
+            <RideContainer>
+                <RideSelector />
+                <ConfirmButtonContainer>
+                    <ConfirmButton>
+                        Confirm UberX
+                    </ConfirmButton>
+                </ConfirmButtonContainer>
+            </RideContainer>
+        </Wrapper>
+    )
+}
+
+export default Confirm;
+
+//* Wrapper Styling */
+const Wrapper = tw.div`
+flex h-screen flex-col
+`
+
+//* RideContainer Styling */
+const RideContainer = tw.div`
+flex-1 flex flex-col h-1/2
+`
+
+//* ConfirmButton Styling */
+const ConfirmButtonContainer = tw.div`
+border-t-2
+`
+const ConfirmButton = tw.div`
+bg-black text-white my-4 mx-4 py-4 text-center text-xl rounded-lg
+`
+
+//* BackButton Styling */
+const ButtonContainer = tw.div`
+bg-white px-4
+`
+const BackButton = tw.img`
+h-12 cursor-pointer object-none object-left-top
+`
