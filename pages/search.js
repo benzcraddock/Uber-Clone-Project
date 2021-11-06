@@ -16,8 +16,8 @@ const Search = () => {
         <ButtonContainer>
             {/** Link for Back button to go back to home/map page */}
             <Link href={"/"}>
-            <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
-            {/** link the back button */}
+                <BackButton src="https://img.icons8.com/ios-filled/50/000000/left.png" />
+                {/** link the back button */}
             </Link>
             {/** close link */}
         </ButtonContainer>
