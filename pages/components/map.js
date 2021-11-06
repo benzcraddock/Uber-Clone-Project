@@ -20,7 +20,7 @@ const Map = () => {
     )
 }
 
-export default Map
+export default Map;
 
 /** Map Styling */
 const Wrapper = tw.div`

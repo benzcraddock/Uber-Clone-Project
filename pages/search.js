@@ -34,14 +34,14 @@ const Search = () => {
             </SavedPlaces>
         {/** Confirm Location */}
         <ConfirmButtonContainer>
-            <ConfirmButton>Confirm Location</ConfirmButton>
+            Confirm Location
         </ConfirmButtonContainer>
         {/** Create Button and make it black with text center */}
     </Wrapper>
     )
 }
 
-export default Search
+export default Search;
 
 /** Wrapper Styling */
 const Wrapper = tw.div`
@@ -53,7 +53,7 @@ const ButtonContainer = tw.div`
 bg-white px-4
 `
 const BackButton = tw.img`
-h-12
+h-12 cursor-pointer
 `
 
 /** Icons Styling */
@@ -96,8 +96,5 @@ bg-gray-400 w-10 h-10 p-2 rounded-full mr-2
 
 /** Confirm Button Styling */
 const ConfirmButtonContainer = tw.div`
-flex flex-col flex-1 items-center
-`
-const ConfirmButton = tw.div`
-h-12 bg-black text-xl text-white px-8 flex items-center rounded-lg
+bg-black text-white text-center mt-2 mx-4 px-4 py-3 text-2xl cursor-pointer
 `
