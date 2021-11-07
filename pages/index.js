@@ -2,7 +2,7 @@ import tw from "tailwind-styled-components";
 import Map from "./components/map";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { auth } from '../firebase';
+import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 
@@ -13,14 +13,14 @@ export default function Home() {
 
   useEffect(() => {
     return onAuthStateChanged(auth, user => {
-      if(user) {
+      if (user) {
         setUser({
           name: user.displayName,
-          photoUrl: user.photoUrl,
+          photoUrl: user.photoURL,
         })
       } else {
-        setUser(null)
-        router.push('/login')
+        setUser(null);
+        router.push("/login");
       }
     })
   }, []);
@@ -35,8 +35,10 @@ export default function Home() {
           <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg" />
           <Profile>
             <Name>{user && user.name}</Name>
-            <UserImage src={user && user.photoUrl} 
-            onClick={() => signOut(auth)}/>
+            <UserImage
+              src={user && user.photoUrl} 
+              onClick={() => signOut(auth)}
+            />
           </Profile>
         </Header>
         {/** ActionButtons */}

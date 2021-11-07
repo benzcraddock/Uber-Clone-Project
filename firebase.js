@@ -1,12 +1,8 @@
-import { GoogleAuthProvider, getAuth } from 'firebase/auth'
-
-// Import the functions you need from the SDKs you need
+import { GoogleAuthProvider, getAuth } from 'firebase/auth';
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDaYcuBzh3uEbTKfpu5mtj3MLilzO8OE10",
   authDomain: "uber-clone-project-d355b.firebaseapp.com",
@@ -22,4 +18,5 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
+// export so other files have access to firebase app, google provider, and authentication
 export { app, provider, auth };
