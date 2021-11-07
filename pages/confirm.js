@@ -35,7 +35,7 @@ const Confirm = () => {
         )
             .then(response => response.json())
             .then(data => {
-                console.log("Dropoff")
+                // console.log("Dropoff")
                 setDropoffCoordinates(data.features[0].center);
             })
     }
