@@ -37,7 +37,6 @@ const Map = (props) => {
         .setLngLat(coordinates)
         .addTo(map);
     }
-
     
     return (
         <Wrapper id='map'>

@@ -1,4 +1,5 @@
 // Code from Day 1 includes creation of Home and Search pages
+// Code from Day 2 and Day 3:
 
 1. Link the Back Button to go the Home Page using the Link tag ✅
 2. Create the confirm locations button ✅
@@ -10,5 +11,5 @@
 8. Pass in location data into confirm page ✅
 9. Use the passed in data to put it on the map ✅
 10. Create the HTML for Ride Selector ✅
-11. Calculate the price of the Uber
-12. Add Login
+11. Calculate the price of the Uber ✅
+12. Add Login ✅
